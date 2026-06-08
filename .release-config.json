@@ -56,7 +56,7 @@
   },
 
   "build": {
-    "command": "python3 -m build",
+    "command": "/usr/bin/python3 -m build",
     "artifacts": ["dist/*.tar.gz", "dist/*.whl"],
     "minSizeKB": 1,
     "maxSizeKB": 1000
