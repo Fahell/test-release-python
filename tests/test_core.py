@@ -1,7 +1,8 @@
 """Tests for core functionality."""
 
 import pytest
-from test_release_python import hello, add, multiply, __version__
+
+from test_release_python import __version__, add, hello, multiply
 
 
 def test_version():

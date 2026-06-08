@@ -11,11 +11,11 @@ def hello():
 
 def add(a, b):
     """Add two numbers together.
-    
+
     Args:
         a: First number
         b: Second number
-        
+
     Returns:
         Sum of a and b
     """
@@ -24,11 +24,11 @@ def add(a, b):
 
 def multiply(a, b):
     """Multiply two numbers together.
-    
+
     Args:
         a: First number
         b: Second number
-        
+
     Returns:
         Product of a and b
     """
