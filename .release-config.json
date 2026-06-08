@@ -1,0 +1,70 @@
+{
+  "name": "test-release-python",
+  "type": "python",
+  
+  "version": {
+    "files": ["pyproject.toml", "src/test_release_python/__init__.py"],
+    "patterns": {
+      "pyproject.toml": "version = \"{version}\"",
+      "src/test_release_python/__init__.py": "__version__ = \"{version}\""
+    }
+  },
+
+  "hooks": {
+    "afterVersionBump": [
+      {
+        "name": "update-lock-file",
+        "command": "echo 'Lock file update hook (placeholder)'",
+        "description": "Placeholder for lock file updates (poetry.lock, pdm.lock, etc.)"
+      }
+    ],
+    "afterBuild": [
+      {
+        "name": "verify-artifacts",
+        "command": "ls -lh dist/",
+        "description": "List build artifacts after build"
+      }
+    ]
+  },
+
+  "lint": {
+    "enabled": true,
+    "command": "ruff check ."
+  },
+
+  "tests": {
+    "enabled": true,
+    "command": "pytest -v",
+    "required": true
+  },
+
+  "security": {
+    "audit": false,
+    "detectSecrets": true,
+    "secretPatterns": [
+      "AKIA[0-9A-Z]{16}",
+      "password\\s*[:=]\\s*['\"][^'\"]{8,}['\"]",
+      "secret\\s*[:=]\\s*['\"][^'\"]{8,}['\"]"
+    ]
+  },
+
+  "build": {
+    "command": "python -m build",
+    "artifacts": ["dist/*.tar.gz", "dist/*.whl"],
+    "minSizeKB": 1,
+    "maxSizeKB": 1000
+  },
+
+  "pr": {
+    "enabled": true,
+    "baseBranch": "main",
+    "requireCI": false,
+    "autoMerge": true,
+    "mergeStrategy": "squash"
+  },
+
+  "githubRelease": {
+    "enabled": true,
+    "generateChangelog": true
+  }
+}
