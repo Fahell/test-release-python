@@ -11,6 +11,13 @@
   },
 
   "hooks": {
+    "beforeTest": [
+      {
+        "name": "install-dev",
+        "command": "pip install -e . --break-system-packages --quiet",
+        "description": "Install package in development mode before running tests"
+      }
+    ],
     "afterVersionBump": [
       {
         "name": "update-lock-file",
